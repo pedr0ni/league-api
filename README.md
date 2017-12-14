@@ -7,6 +7,9 @@ API feita em Java para o League of Legends.
 Você precisa de uma conta no jogo League of Legends para adquirir uma chave de API.
 
 ## Exemplos
+
+Veja todos exemplos na [WIKI](https://github.com/pedr0ni/league-api/wiki)
+
 * Player Info
 ```
 Player p = new Player("Pedronisz", Region.BR1);
