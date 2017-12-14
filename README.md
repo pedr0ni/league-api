@@ -11,7 +11,7 @@ Você precisa de uma conta no jogo League of Legends para adquirir uma chave de 
 Veja todos exemplos na [WIKI](https://github.com/pedr0ni/league-api/wiki)
 
 * Player Info
-```
+```java
 Player p = new Player("Pedronisz", Region.BR1);
 try {
   p.fetchBasic();
