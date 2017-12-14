@@ -12,9 +12,9 @@ Você precisa de uma conta no jogo League of Legends para adquirir uma chave de 
 Player p = new Player("Pedronisz", Region.BR1);
 try {
   p.fetchBasic();
-	} catch (IOException e) {
-	  e.printStackTrace();
-	}
+} catch (IOException e) {
+  e.printStackTrace();
+}
 System.out.println(p.getSummonerLevel());
 ```
 
