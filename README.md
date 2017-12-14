@@ -7,7 +7,7 @@ API feita em Java para o League of Legends.
 Você precisa de uma conta no jogo League of Legends para adquirir uma chave de API.
 
 ## Exemplos
-
+* Player Info
 ```
 Player p = new Player("Pedronisz", Region.BR1);
 try {
@@ -21,6 +21,7 @@ System.out.println(p.getSummonerLevel());
 ## Build
 
 * [Java](https://www.java.com/pt_BR/)
+* [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Riot Games API](https://developer.riotgames.com/)
 
 ## Autor
