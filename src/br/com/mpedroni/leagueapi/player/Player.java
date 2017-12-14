@@ -10,47 +10,63 @@ import br.com.mpedroni.leagueapi.json.JSONObject;
 public class Player {
 	
 	private Region region;
+	private String name;
+	private boolean isFetched;
 	
-	private String request;
-	private JSONObject object;
+	private JSONObject object_basic;
+	private RankedQueue queue;
 
 	public Player(String name, Region region) {
+		this.name = name;
 		this.region = region;
-		
-		this.request = "https://"+region.toString().toLowerCase()+".api.riotgames.com/lol/summoner/v3/summoners/by-name/"+name+"?api_key="+API.API_KEY;
+		this.isFetched = false;
 	}
 	
-	public void fetchBasic() throws IOException {
-		String response = new URLCatcher(this.request).fetch();
-		this.object = new JSONObject(response);
+	public void fetch() throws IOException {
+		String response = new URLCatcher("https://"+region.toString().toLowerCase()+".api.riotgames.com/lol/summoner/v3/summoners/by-name/"+this.name+"?api_key="+API.API_KEY).fetch();
+		this.object_basic = new JSONObject(response);
+		this.isFetched = true;
 	}
+	
+	
 	
 	public int getProfileIconId() {
-		return this.object.getInt("profileIconId");
+		return this.object_basic.getInt("profileIconId");
 	}
 	
 	public String getName() {
-		return this.object.getString("name");
+		return this.object_basic.getString("name");
 	}
 	
-	public int getSummonerLevel() {
-		return this.object.getInt("summonerLevel");
+	public long getSummonerLevel() {
+		return this.object_basic.getLong("summonerLevel");
 	}
 	
-	public int getAccountId() {
-		return this.object.getInt("accountId");
+	public long getAccountId() {
+		return this.object_basic.getLong("accountId");
 	}
 	
-	public int getId() {
-		return this.object.getInt("id");
+	public long getId() {
+		return this.object_basic.getLong("id");
 	}
 	
 	public long getRevisionDate() {
-		return this.object.getLong("revisionDate");
+		return this.object_basic.getLong("revisionDate");
 	}
 	
 	public Region getRegion() {
 		return this.region;
+	}
+	
+	public boolean isFetched() {
+		return this.isFetched;
+	}
+	
+	public RankedQueue getRankedQueue() {
+		if (this.queue == null) {
+			this.queue = new RankedQueue(this);
+		}
+		return this.queue;
 	}
 
 }
